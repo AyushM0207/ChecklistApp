@@ -55,10 +55,6 @@ pip install -r requirements.txt
 
 Copy `config.sample.json` to `config.json` and adjust it to suit your
 channel. The most important values are the Google OAuth files and your
-preferred output directories. You can edit the JSON manually or use the
-visual configurator found in [`frontend/index.html`](frontend/index.html),
-which provides a polished dashboard to tailor settings and download a
-ready-to-use configuration file.
 
 ```bash
 cp config.sample.json config.json
@@ -154,19 +150,3 @@ Place optional supporting files in the folder referenced by
   their rules.
 
 Enjoy automating your cartoon Shorts pipeline!
-
-## Web dashboard (optional)
-
-For a more visual experience, open [`frontend/index.html`](frontend/index.html)
-in your browser. The dashboard offers:
-
-- A hero overview card showing batch readiness and upload privacy.
-- A guided configuration builder that mirrors every `config.json` field and
-  lets you download the JSON or copy it to your clipboard.
-- One-click command cards to copy the most common CLI invocations
-  (`--dry-run`, manual topics, and custom batch counts).
-- A responsive, professional UI crafted with modern HTML, CSS, and JavaScript
-  so you can manage the automation without writing any code.
-
-Use the dashboard after installing the prerequisites—it does not require a
-server and can run from any static host or directly from your filesystem.
