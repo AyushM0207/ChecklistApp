@@ -1,0 +1,14 @@
+{
+  "trending_region": "united_states",
+  "videos_per_day": 4,
+  "output_dir": "output",
+  "assets_dir": "assets",
+  "youtube_category_id": "23",
+  "tags": ["shorts", "cartoon", "comedy"],
+  "video_title_template": "{topic} - Cartoon Comedy Short",
+  "video_description_template": "A quick cartoon short riffing on {topic}. Script: {script}",
+  "youtube_privacy_status": "private",
+  "youtube_client_secrets_file": "credentials/client_secret.json",
+  "youtube_token_file": "credentials/token.json",
+  "background_music_file": null
+}
