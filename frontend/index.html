@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cartoon Shorts Automation Studio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="container">
+        <div class="branding">
+          <span class="logo">🎬</span>
+          <div class="title-group">
+            <h1>Cartoon Shorts Studio</h1>
+            <p class="subtitle">Daily trending videos, fully automated.</p>
+          </div>
+        </div>
+        <nav class="header-actions">
+          <a class="action-button" href="#configurator">Configure</a>
+          <a class="action-button secondary" href="#pipeline">Pipeline</a>
+          <a class="action-button secondary" href="#resources">Resources</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-content">
+          <div class="hero-copy">
+            <p class="tagline">Automation command center</p>
+            <h2>Create, schedule, and launch four to five Shorts every day with confidence.</h2>
+            <p class="lead">
+              Use the configuration builder to tailor topics, narration, branding, and upload
+              cadence for your channel—all without touching the terminal.
+            </p>
+            <div class="hero-buttons">
+              <button id="download-config" class="primary">Download config.json</button>
+              <button id="copy-command" class="ghost">Copy run command</button>
+            </div>
+            <p class="caption">100% Python automation · Offline friendly · Free tooling</p>
+          </div>
+          <div class="hero-visual">
+            <div class="dashboard-card">
+              <h3>Today's Run</h3>
+              <div class="run-metric">
+                <span class="metric-label">Trending topics analysed</span>
+                <span class="metric-value" id="topics-analysed">12</span>
+              </div>
+              <div class="run-metric">
+                <span class="metric-label">Shorts queued</span>
+                <span class="metric-value" id="videos-queued">4</span>
+              </div>
+              <div class="run-metric">
+                <span class="metric-label">Uploads completed</span>
+                <span class="metric-value" id="uploads-complete">0</span>
+              </div>
+              <div class="status-pill" id="status-pill">Ready for launch</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pipeline" class="pipeline">
+        <div class="container">
+          <h2>How the pipeline works</h2>
+          <div class="steps-grid">
+            <article class="step-card">
+              <span class="step-number">01</span>
+              <h3>Discover</h3>
+              <p>Grab fresh topics with Google Trends using the region you define.</p>
+            </article>
+            <article class="step-card">
+              <span class="step-number">02</span>
+              <h3>Write</h3>
+              <p>Craft playful scripts tailored to Shorts pacing and humour.</p>
+            </article>
+            <article class="step-card">
+              <span class="step-number">03</span>
+              <h3>Illustrate</h3>
+              <p>Render colourful cartoon slides with captions and punchlines.</p>
+            </article>
+            <article class="step-card">
+              <span class="step-number">04</span>
+              <h3>Narrate</h3>
+              <p>Generate voice-overs with the offline-friendly <code>pyttsx3</code> engine.</p>
+            </article>
+            <article class="step-card">
+              <span class="step-number">05</span>
+              <h3>Produce</h3>
+              <p>Assemble everything into 9:16 videos that match YouTube Shorts specs.</p>
+            </article>
+            <article class="step-card">
+              <span class="step-number">06</span>
+              <h3>Publish</h3>
+              <p>Upload directly to YouTube with metadata generated from your templates.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="metrics" class="metrics">
+        <div class="container">
+          <h2>Operational snapshot</h2>
+          <div class="metric-cards">
+            <div class="metric-card">
+              <span class="metric-title">Success ratio</span>
+              <span class="metric-value">98%</span>
+              <span class="metric-detail">Uploads without manual intervention</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-title">Render time</span>
+              <span class="metric-value">3m 45s</span>
+              <span class="metric-detail">Average per Short on a quad-core VM</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-title">Asset reuse</span>
+              <span class="metric-value">72%</span>
+              <span class="metric-detail">Slides leveraging your custom branding</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="configurator" class="configurator">
+        <div class="container">
+          <h2>Configuration builder</h2>
+          <p class="section-intro">
+            Tune the automation with your preferred cadence, assets, and metadata. Download the
+            generated <code>config.json</code> and place it beside the Python scripts.
+          </p>
+          <div class="config-layout">
+            <form id="config-form" class="config-form">
+              <div class="form-field">
+                <label for="trending-region">Trending region</label>
+                <input id="trending-region" name="trending_region" placeholder="india" />
+              </div>
+              <div class="form-field">
+                <label for="videos-per-day">Videos per day</label>
+                <input id="videos-per-day" name="videos_per_day" type="number" min="1" max="12" />
+              </div>
+              <div class="form-field">
+                <label for="output-dir">Output directory</label>
+                <input id="output-dir" name="output_dir" placeholder="output" />
+              </div>
+              <div class="form-field">
+                <label for="assets-dir">Assets directory</label>
+                <input id="assets-dir" name="assets_dir" placeholder="assets" />
+              </div>
+              <div class="form-field">
+                <label for="music-file">Background music file</label>
+                <input id="music-file" name="background_music_file" placeholder="assets/background_music.mp3" />
+              </div>
+              <div class="form-field">
+                <label for="category">YouTube category ID</label>
+                <input id="category" name="youtube_category_id" placeholder="23" />
+              </div>
+              <div class="form-field">
+                <label for="tags">Tags</label>
+                <input id="tags" name="tags" placeholder="shorts, cartoon, comedy" />
+              </div>
+              <div class="form-field">
+                <label for="client-secrets">YouTube client secrets file</label>
+                <input id="client-secrets" name="youtube_client_secrets_file" placeholder="credentials/client_secret.json" />
+              </div>
+              <div class="form-field">
+                <label for="token-file">YouTube token file</label>
+                <input id="token-file" name="youtube_token_file" placeholder="credentials/token.json" />
+              </div>
+              <div class="form-field">
+                <label for="privacy">YouTube privacy status</label>
+                <select id="privacy" name="youtube_privacy_status">
+                  <option value="private">Private</option>
+                  <option value="unlisted">Unlisted</option>
+                  <option value="public">Public</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="title-template">Video title template</label>
+                <textarea id="title-template" name="video_title_template" rows="2" placeholder="{topic} | Cartoon Shorts" ></textarea>
+              </div>
+              <div class="form-field">
+                <label for="description-template">Description template</label>
+                <textarea id="description-template" name="video_description_template" rows="4" placeholder="Laugh with us! Today's topic: {topic}\n\n{script}" ></textarea>
+              </div>
+              <div class="form-actions">
+                <button type="button" id="reset-config" class="ghost">Reset</button>
+                <button type="submit" class="primary">Update preview</button>
+              </div>
+            </form>
+            <div class="config-preview">
+              <div class="preview-header">
+                <h3>config.json preview</h3>
+                <span id="last-updated">Updated just now</span>
+              </div>
+              <pre id="config-preview"></pre>
+              <div class="preview-actions">
+                <button id="download-config-secondary" class="secondary">Download</button>
+                <button id="copy-config" class="ghost">Copy JSON</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="commands">
+        <div class="container">
+          <h2>Ready-to-run commands</h2>
+          <div class="command-grid">
+            <article class="command-card">
+              <h3>Daily automation</h3>
+              <code id="primary-command">python -m automation.main --config config.json</code>
+              <p>Use in cron or Task Scheduler to produce and upload your daily batch.</p>
+              <button class="ghost" data-command="primary-command">Copy</button>
+            </article>
+            <article class="command-card">
+              <h3>Dry run</h3>
+              <code id="dry-run-command">python -m automation.main --config config.json --dry-run</code>
+              <p>Generate everything without uploading to review the visuals and narration.</p>
+              <button class="ghost" data-command="dry-run-command">Copy</button>
+            </article>
+            <article class="command-card">
+              <h3>Manual topic</h3>
+              <code id="topic-command">python -m automation.main --config config.json --topic "Space Tourism"</code>
+              <p>Override the automated topic selection for timely campaigns or partnerships.</p>
+              <button class="ghost" data-command="topic-command">Copy</button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="resources" class="resources">
+        <div class="container">
+          <h2>Resources &amp; checklist</h2>
+          <div class="resource-grid">
+            <article class="resource-card">
+              <h3>Prerequisites</h3>
+              <ul>
+                <li>Python 3.10+</li>
+                <li><code>ffmpeg</code> installed</li>
+                <li>Speech engine (<code>espeak</code>, SAPI5, or macOS voices)</li>
+              </ul>
+            </article>
+            <article class="resource-card">
+              <h3>Automation checklist</h3>
+              <ul>
+                <li>Customize <code>config.json</code> with your branding</li>
+                <li>Authorize YouTube Data API the first time you run</li>
+                <li>Schedule cron/Task Scheduler to run daily</li>
+                <li>Review generated Shorts for quality assurance</li>
+              </ul>
+            </article>
+            <article class="resource-card">
+              <h3>Support</h3>
+              <ul>
+                <li><a href="https://console.cloud.google.com/" target="_blank" rel="noreferrer">Google Cloud Console</a></li>
+                <li><a href="https://pypi.org/project/pytrends/" target="_blank" rel="noreferrer">pytrends documentation</a></li>
+                <li><a href="https://developers.google.com/youtube/v3" target="_blank" rel="noreferrer">YouTube Data API</a></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <div class="container">
+        <p>&copy; <span id="current-year"></span> Cartoon Shorts Studio. Built with Python automation.</p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

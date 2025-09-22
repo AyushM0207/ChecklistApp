@@ -55,7 +55,6 @@ pip install -r requirements.txt
 
 Copy `config.sample.json` to `config.json` and adjust it to suit your
 channel. The most important values are the Google OAuth files and your
-preferred output directories.
 
 ```bash
 cp config.sample.json config.json
